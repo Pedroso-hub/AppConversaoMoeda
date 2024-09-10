@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Moedas</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body>
+    <div class="container">
+        <header>Converso de Moedas</header>
+        <form action="#">
+            <div class="quantidade">
+                <p>Digite o valor para conversão:</p>
+                <input type="text">
+            </div>
+            <div class="drop-list">
+                <div class="de">
+                    <p>De:</p>
+                    <div class="select-box1">
+                        <img src="https://flagsapi.com/BR/flat/64.png" alt="bandeira" id="flag">
+                        <select id="selecione-pais">
+
+                        </select>
+                    </div>
+                </div>
+                <div class="icone"><i class="fas fa-exchange-alt"></i></div>
+                <div class="para">
+                    <p>Para:</p>
+                    <div class="select-box2">
+                        <img src="https://flagsapi.com/US/flat/64.png" alt="bandeira" id="flag2">
+                        <select id="selecione-pais2">
+
+                        </select>
+                    </div>
+                </div>
+            </div>
+                <div class="taxa-conversao">1 BRL = 10 USD</div>
+                <button>Faça Conversão</button>
+            </div>
+        </form>
+    </div>
+    <script src="lista-paises.js"></script>
+    <script src="script.js"></script> 
+</body>
+</html>
