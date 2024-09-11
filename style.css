@@ -16,6 +16,15 @@ body{
 
 }
 
+button{
+    background-color: #675AFE;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    align-self: center;
+}
+
 .container{
     width: 500px;
     padding: 30px;
@@ -27,13 +36,15 @@ body{
     font-size: 25px;
     font-weight: 500;
     text-align: center;
+    background-color: #675AFE;
+    border-radius: 5px;
 }
 
 .container form{
     margin: 40px 0 20px 0;
 }
 
-form :where(input, select, button){
+form :where(input, select){
     width: 100%;
     outline: none;
     border: none;
@@ -59,24 +70,40 @@ form input:focus{
 
 form .drop-list{
     display: flex;
-    align-items: center;
-    justify-content: space-around;
+    flex-direction: column;
+    align-items: start;
 }
 
 
 .select-box1{
+    margin: 5px;
     display: flex;
     height: 45px;
-    width: 115px;
+    width: 250px;
     align-items: center;
     justify-content: center;
 }
 
 .select-box2{
+    margin: 5px;
     display: flex;
     height: 45px;
-    width: 115px;
+    width: 250px;
     align-items: center;
     justify-content: center;
+}
+
+.taxa-conversao {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.icone{
+    background-color: #675AFE;
+    width: 30px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
 }
 
