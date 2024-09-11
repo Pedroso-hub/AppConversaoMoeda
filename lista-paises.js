@@ -51,7 +51,7 @@ let country_list = {
 };
 
 let taxa = document.querySelector(".taxa-conversao");
-taxa.innerText = "oi";
+taxa.innerText = "";
 
 function populateCountryList(defaultCurrency, selectId, flagId) {
     //vai ser o selecione pais
@@ -96,13 +96,7 @@ function populateCountryList(defaultCurrency, selectId, flagId) {
 
         flagElement.src = `https://flagsapi.com/${selectedCountry.code}/flat/64.png`;
 
-        //if (moedaDe!== undefined && moedaPara !== undefined){
-        //    result = await taxaConversao(moedaDe, moedaPara);
-        //    taxa.innerText = await result;    
-       // }
         
-        //problema: sempre que essa funçao eh chamada, as variaveis sao resetadas, e ela eh chamada sempre
-        //que alguem muda um pais De, ou Para.
         taxaConversao(moedaDe, moedaPara).then((result)=> taxa.innerText= result);
 
 
