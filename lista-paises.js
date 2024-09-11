@@ -50,6 +50,8 @@ let country_list = {
     ]
 };
 
+let taxa = document.querySelector("taxa-conversao");
+
 function populateCountryList(defaultCurrency, selectId, flagId) {
     //vai ser o selecione pais
     const selectElement = document.getElementById(selectId);
@@ -87,10 +89,12 @@ function populateCountryList(defaultCurrency, selectId, flagId) {
             moedaPara = selectedCurrency;
         }
 
-
         const selectedCountry = country_list[selectedCurrency][0]; 
 
         flagElement.src = `https://flagsapi.com/${selectedCountry.code}/flat/64.png`;
+
+        taxaConversao(moedaDe, moedaPara).then((result)=> taxa.innerText= result);
+        
 
         
     });
@@ -103,5 +107,20 @@ function populateCountryList(defaultCurrency, selectId, flagId) {
 populateCountryList("EUR", "selecione-pais", "flag");
 populateCountryList("USD", "selecione-pais2", "flag2");
 
+
+async function taxaConversao (moedaDe, moedaPara) {
+    let moedasRequest = moedaDe+"-"+moedaPara;
+    let url = "https://economia.awesomeapi.com.br/last/"+moedasRequest;
+    console.log(url);
+    let moedasJson = moedaDe+moedaPara;
+    const request = new Request(url) ;
+    let taxaConversao;
+     const result = await fetch(request)
+     dados = await result.json()
+     taxaConversao = dados[moedasJson].ask;
+     taxaConversao
+
+  return taxaConversao;
+}
 
 
