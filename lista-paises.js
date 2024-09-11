@@ -51,6 +51,7 @@ let country_list = {
 };
 
 function populateCountryList(defaultCurrency, selectId, flagId) {
+    //vai ser o selecione pais
     const selectElement = document.getElementById(selectId);
     const flagElement = document.getElementById(flagId);
 
@@ -69,16 +70,38 @@ function populateCountryList(defaultCurrency, selectId, flagId) {
 
     const defaultCountry = country_list[defaultCurrency][0]; 
     selectElement.value = defaultCurrency;
+    
     flagElement.src = `https://flagsapi.com/${defaultCountry.code}/flat/64.png`;
+    let moedaDe;
+    let moedaPara;
 
     selectElement.addEventListener('change', function() {
         const selectedCurrency = this.value;
+        if (selectElement.id == "selecione-pais"){
+            console.log("moeda de: "+selectedCurrency);
+            moedaDe = selectedCurrency;
+
+        }
+        else if (selectElement.id == "selecione-pais2"){
+            console.log("moeda para: "+selectedCurrency);
+            moedaPara = selectedCurrency;
+        }
+
+
         const selectedCountry = country_list[selectedCurrency][0]; 
 
         flagElement.src = `https://flagsapi.com/${selectedCountry.code}/flat/64.png`;
+
+        
     });
+
+
+
 }
 
 
 populateCountryList("EUR", "selecione-pais", "flag");
 populateCountryList("USD", "selecione-pais2", "flag2");
+
+
+
