@@ -50,7 +50,8 @@ let country_list = {
     ]
 };
 
-let taxa = document.querySelector("taxa-conversao");
+let taxa = document.querySelector(".taxa-conversao");
+taxa.innerText = "oi";
 
 function populateCountryList(defaultCurrency, selectId, flagId) {
     //vai ser o selecione pais
@@ -74,27 +75,36 @@ function populateCountryList(defaultCurrency, selectId, flagId) {
     selectElement.value = defaultCurrency;
     
     flagElement.src = `https://flagsapi.com/${defaultCountry.code}/flat/64.png`;
-    let moedaDe;
-    let moedaPara;
+    let moedaDe = "EUR";
+    let moedaPara = "USD";
 
-    selectElement.addEventListener('change', function() {
+    selectElement.addEventListener('change', async function() {
+        //essa var eh o valor do selectElement
         const selectedCurrency = this.value;
         if (selectElement.id == "selecione-pais"){
             console.log("moeda de: "+selectedCurrency);
-            moedaDe = selectedCurrency;
+            moedaDe = await selectedCurrency;
 
         }
+        //
         else if (selectElement.id == "selecione-pais2"){
             console.log("moeda para: "+selectedCurrency);
-            moedaPara = selectedCurrency;
+            moedaPara = await selectedCurrency;
         }
 
         const selectedCountry = country_list[selectedCurrency][0]; 
 
         flagElement.src = `https://flagsapi.com/${selectedCountry.code}/flat/64.png`;
 
-        taxaConversao(moedaDe, moedaPara).then((result)=> taxa.innerText= result);
+        //if (moedaDe!== undefined && moedaPara !== undefined){
+        //    result = await taxaConversao(moedaDe, moedaPara);
+        //    taxa.innerText = await result;    
+       // }
         
+        //problema: sempre que essa funçao eh chamada, as variaveis sao resetadas, e ela eh chamada sempre
+        //que alguem muda um pais De, ou Para.
+        taxaConversao(moedaDe, moedaPara).then((result)=> taxa.innerText= result);
+
 
         
     });
@@ -122,5 +132,8 @@ async function taxaConversao (moedaDe, moedaPara) {
 
   return taxaConversao;
 }
+
+
+
 
 
