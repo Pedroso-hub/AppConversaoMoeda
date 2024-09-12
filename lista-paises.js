@@ -50,8 +50,13 @@ let country_list = {
     ]
 };
 
+
+
+let dinheiro = document.querySelector(".dinheiro").value;
+let botaoConverter = document.querySelector(".botaoConversao");
 let taxa = document.querySelector(".taxa-conversao");
 taxa.innerText = "";
+let paridade = null;
 
 function populateCountryList(defaultCurrency, selectId, flagId) {
     //vai ser o selecione pais
@@ -97,7 +102,9 @@ function populateCountryList(defaultCurrency, selectId, flagId) {
         flagElement.src = `https://flagsapi.com/${selectedCountry.code}/flat/64.png`;
 
         
-        taxaConversao(moedaDe, moedaPara).then((result)=> taxa.innerText= result);
+        taxaConversao(moedaDe, moedaPara).then((result)=> paridade=result);
+
+        botaoConverter.addEventListener("click", converterEMostrar(dinheiro, paridade,  taxa))
 
 
         
@@ -123,9 +130,20 @@ async function taxaConversao (moedaDe, moedaPara) {
      dados = await result.json()
      taxaConversao = dados[moedasJson].ask;
      taxaConversao
-
   return taxaConversao;
 }
+
+
+
+
+
+
+function converterEMostrar(value, conversionRate, element){
+    element.innerText = value*conversionRate;
+}
+
+
+
 
 
 
